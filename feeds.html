@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Heinz Wittenbrink" />
+  <title>XML and Content Management — RSS</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">XML and Content Management — RSS</h1>
+  <p class="author">
+Heinz Wittenbrink
+  </p>
+  <p class="date">2. Mai 2017</p>
+</div>
+<div id="zielsetzung" class="slide section level2">
+<h2>Zielsetzung</h2>
+<ul>
+<li>RSS als Beispiel eines XML-Vokabulars verstehen</li>
+<li>Verwendungsmöglichkeiten eines XML-Formats verstehen</li>
+<li>Syntaktische und semantische Unterschiede ähnlicher XML-Formate verstehen</li>
+<li>Proprietäre und offene Alternativen verstehen</li>
+</ul>
+</div>
+<div id="was-ist-rss" class="titleslide slide section level1"><h1>Was ist RSS?</h1></div><div id="akronym-und-auflösung" class="slide section level2">
+<h2>Akronym und Auflösung</h2>
+<ul>
+<li><strong>R</strong>ich <strong>S</strong>ite <strong>S</strong>ummary</li>
+<li><strong>R</strong>eally <strong>S</strong>imple <strong>S</strong> yndication</li>
+</ul>
+<p><a href="https://www.pinterest.com/pin/189432728049278934/" title="History of RSS Infographic | aNewDomain.net | Pinterest">History of RSS Infographic | aNewDomain.net | Pinterest</a></p>
+<p><a href="https://indieweb.org/RSS" title="RSS - IndieWeb">RSS - IndieWeb</a></p>
+</div><div id="publizistische-konsequenzen-von-feeds" class="slide section level2">
+<h2>Publizistische Konsequenzen von Feeds</h2>
+<ul>
+<li>Lösung von Inhalten aus Publikationen</li>
+<li>Personalisierte Zusammenstellung von Inhalten</li>
+<li>Direkter Zugang zu Quellen</li>
+<li>Echtzeit-Informationen</li>
+</ul>
+</div><div id="rss-in-der-praxis-feedreader" class="slide section level2">
+<h2>RSS in der Praxis: Feedreader</h2>
+<ul>
+<li><a href="https://www.bloglovin.com/feed" title="Bloglovin’">Bloglovin’</a></li>
+<li><a href="https://feedly.com/i/my" title="Today / Me">Feedly</a></li>
+</ul>
+</div><div id="rss-in-der-praxis-aggregation" class="slide section level2">
+<h2>RSS in der Praxis: Aggregation</h2>
+<ul>
+<li><a href="http://micro.blog/account/feeds" title="Micro.blog">Micro.blog</a></li>
+<li><a href="https://www.wprssaggregator.com/live-demos/" title="Our Examples - WP RSS Aggregator">Our Examples - WP RSS Aggregator</a></li>
+</ul>
+</div><div id="rss-in-der-praxis-monitoring-und-seo" class="slide section level2">
+<h2>RSS in der Praxis: Monitoring und SEO</h2>
+<ul>
+<li><p><a href="https://feedburner.google.com/fb/a/dashboard?id=lb1m82guvp0jrko3pm89t166b8&amp;gsessionid=nWj8iLiYmfLxmX24v_q4YjPN7hryA1o0" title="Analyze :: Feed Stats Dashboard">Feedburner</a></p></li>
+<li><p><a href="https://webmasters.googleblog.com/2014/10/best-practices-for-xml-sitemaps-rssatom.html" title="Official Google Webmaster Central Blog: Best practices for XML sitemaps &amp; RSS/Atom feeds">Official Google Webmaster Central Blog: Best practices for XML sitemaps &amp; RSS/Atom feeds</a></p></li>
+</ul>
+</div><div id="rss-in-der-praxis-rss-als-austauschformat" class="slide section level2">
+<h2>RSS in der Praxis: RSS als Austauschformat</h2>
+<ul>
+<li><a href="https://zapier.com/blog/facebook-twitter-rss-feed/" title="How to Get an RSS Feed for Twitter, Instagram, Facebook, and Pinterest">How to Get an RSS Feed for Twitter, Instagram, Facebook, and Pinterest</a></li>
+</ul>
+</div><div id="beispiele-für-rss-dokumente" class="slide section level2">
+<h2>Beispiele für RSS-Dokumente</h2>
+<ul>
+<li><p><a href="https://www.xml.com/pub/a/2002/12/18/dive-into-xml.html" title="What Is RSS">What Is RSS</a></p></li>
+<li><p><a href="http://oer.fh-joanneum.at/contentstrategy/feed/" class="uri">http://oer.fh-joanneum.at/contentstrategy/feed/</a></p></li>
+</ul>
+</div><div id="elemente-von-rss-2.0" class="slide section level2">
+<h2>Elemente von RSS 2.0</h2>
+<ul>
+<li><a href="https://validator.w3.org/feed/docs/rss2.html" title="RSS 2.0 specification">RSS 2.0 specification</a></li>
+<li><p>Darstellung der Elemente von RSS 2.0</p></li>
+<li><div class="figure">
+<img src="https://www.data2type.de/fileadmin/images/Newsfeeds_mit_RSS/RSS2.0-Elemente_Baumdiagramm.jpg" title="Darstellung der RSS-Elemente" alt="Darstellung der RSS-Elemente" />
+<p class="caption">Darstellung der RSS-Elemente</p>
+</div></li>
+</ul>
+</div><div id="anbieten-von-feeds" class="slide section level2">
+<h2>Anbieten von Feeds</h2>
+<ul>
+<li>Produktion im CMS <a href="https://codex.wordpress.org/WordPress_Feeds" title="WordPress Feeds « WordPress Codex">WordPress Feeds « WordPress Codex</a></li>
+<li>Verlinken im HTML-Header</li>
+</ul>
+<pre><code>&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;CONTENT STRATEGY - Open Educational Resources &amp;raquo; Feed&quot; href=&quot;http://oer.fh-joanneum.at/contentstrategy/feed/&quot; /&gt;
+&lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot; title=&quot;CONTENT STRATEGY - Open Educational Resources &amp;raquo; Kommentar-Feed&quot; href=&quot;http://oer.fh-joanneum.at/contentstrategy/comments/feed/&quot; /&gt;</code></pre>
+</div><div id="xml-techologien-schema" class="slide section level2">
+<h2>XML-Techologien: Schema</h2>
+<ul>
+<li><a href="https://rss2schema.codeplex.com/SourceControl/latest#schema/rss-2_0.xsd" title="RSS 2.0 Schema - Source Code">RSS 2.0 Schema - Source Code</a></li>
+</ul>
+</div><div id="xml-technologien-namespaces" class="slide section level2">
+<h2>XML-Technologien: Namespaces</h2>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;rss version=&quot;2.0&quot;
+    xmlns:content=&quot;http://purl.org/rss/1.0/modules/content/&quot;
+    xmlns:wfw=&quot;http://wellformedweb.org/CommentAPI/&quot;
+    xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot;
+    xmlns:atom=&quot;http://www.w3.org/2005/Atom&quot;
+    xmlns:sy=&quot;http://purl.org/rss/1.0/modules/syndication/&quot;
+    xmlns:slash=&quot;http://purl.org/rss/1.0/modules/slash/&quot;
+    &gt;
+
+&lt;channel&gt;
+    &lt;title&gt;CONTENT STRATEGY &amp;#8211; Open Educational Resources&lt;/title&gt;
+    &lt;atom:link href=&quot;http://oer.fh-joanneum.at/contentstrategy/feed/&quot; rel=&quot;self&quot; type=&quot;application/rss+xml&quot; /&gt;
+    &lt;link&gt;http://oer.fh-joanneum.at/contentstrategy&lt;/link&gt;
+    &lt;description&gt;Learning Materials for the M.A. Program in Content Strategy at the University of Applied Sciences Graz&lt;/description&gt;
+    &lt;lastBuildDate&gt;Sat, 29 Apr 2017 08:48:20 +0000&lt;/lastBuildDate&gt;
+    &lt;language&gt;de-DE&lt;/language&gt;
+    &lt;sy:updatePeriod&gt;hourly&lt;/sy:updatePeriod&gt;
+    &lt;sy:updateFrequency&gt;1&lt;/sy:updateFrequency&gt;
+
+    &lt;item&gt;
+        &lt;title&gt;HTML5-Banner mit dem Google Web Designer&lt;/title&gt;
+        &lt;link&gt;http://oer.fh-joanneum.at/contentstrategy/html5-banner-mit-dem-google-web-designer/&lt;/link&gt;
+        &lt;comments&gt;http://oer.fh-joanneum.at/contentstrategy/html5-banner-mit-dem-google-web-designer/#respond&lt;/comments&gt;
+        &lt;pubDate&gt;Sat, 29 Apr 2017 07:03:21 +0000&lt;/pubDate&gt;
+        &lt;dc:creator&gt;&lt;![CDATA[Melanie Mitter]]&gt;&lt;/dc:creator&gt;</code></pre>
+</div>
+<div id="rss-1.0" class="titleslide slide section level1"><h1>RSS 1.0</h1></div><div id="beispiel-dokument-1-pinboard-feed" class="slide section level2">
+<h2>Beispiel-Dokument 1: <a href="https://feeds.pinboard.in/rss/secret:16c05bf34b55b611cbb7/u:heinzwittenbrink/" title="https://feeds.pinboard.in/rss/secret:16c05bf34b55b611cbb7/u:heinzwittenbrink/">Pinboard-Feed</a></h2>
+</div><div id="beispiel-dokument-2" class="slide section level2">
+<h2>Beispiel-Dokument 2:</h2>
+<p><a href="https://www.data2type.de/xml-xslt-xslfo/newsfeeds-rss-atom/rss-1-0-und-rss-1-1/grundstruktur-rss-1-0-dokument/" title="data2type GmbH: Grundstruktur eines RSS 1.0-Dokuments">Grundstruktur eines RSS 1.0-Dokuments</a></p>
+</div><div id="rss-1.0-semantik" class="slide section level2">
+<h2>RSS 1.0-Semantik</h2>
+<p><img src="https://www.data2type.de/fileadmin/images/Newsfeeds_mit_RSS/RDF-Graph-des-Beispieldokuments-1.png" alt="RDF-Graph-des-Beispieldokuments1" /> <img src="https://www.data2type.de/fileadmin/images/Newsfeeds_mit_RSS/RDF-Graph-des-Beispieldokuments-2.png" alt="RDF-Graph-des-Beispieldokuments2" /></p>
+</div>
+<div id="rss-und-atom" class="titleslide slide section level1"><h1>RSS und Atom</h1></div><div id="technische-technische-unterschiede-von-rss-und-atom" class="slide section level2">
+<h2>Technische Technische Unterschiede von RSS und Atom</h2>
+<ul>
+<li>Einbetten von HTML-Inhalten</li>
+<li>Atom als Publikationsformat</li>
+</ul>
+</div><div id="der-atom-standard" class="slide section level2">
+<h2>Der Atom-Standard</h2>
+<ul>
+<li>Beispiel für ein Atom-Dokument: <a href="https://www.data2type.de/xml-xslt-xslfo/newsfeeds-rss-atom/atom/aufbau-atom-feed/grundstruktur-atom-dokument/" title="data2type GmbH: Grundstruktur eines Atom-Dokuments">Grundstruktur eines Atom-Dokuments</a></li>
+</ul>
+</div><div id="atom-elemente" class="slide section level2">
+<h2>Atom-Elemente</h2>
+<div class="figure">
+<img src="https://www.data2type.de/fileadmin/images/Newsfeeds_mit_RSS/struktur-komplexes-atom-dokument-klein.png" alt="Elemente eines Atom-Dokuments" />
+<p class="caption">Elemente eines Atom-Dokuments</p>
+</div>
+</div><div id="xml-technologien-relax-ng-schemas" class="slide section level2">
+<h2>XML-Technologien: Relax NG-Schemas</h2>
+<p><a href="https://gist.github.com/tjdett/4617547" title="Atom schema in RELAX NG XML Syntax Grammar">Atom schema in RELAX NG XML Syntax Grammar</a></p>
+</div>
+<div id="alternativen-zu-xml-basierten-feedformaten" class="titleslide slide section level1"><h1>Alternativen zu XML-basierten Feedformaten</h1></div><div id="json" class="slide section level2">
+<h2>JSON</h2>
+<ul>
+<li><a href="https://www.copterlabs.com/json-what-it-is-how-it-works-how-to-use-it/" title="JSON: What It Is, How It Works, &amp; How to Use It - Copter Labs">JSON: What It Is, How It Works, &amp; How to Use It - Copter Labs</a></li>
+</ul>
+</div><div id="proprietäre-apis" class="slide section level2">
+<h2>Proprietäre APIs</h2>
+<ul>
+<li><a href="https://www.programmableweb.com/news/top-10-social-apis-facebook-twitter-and-google-plus/analysis/2015/02/17" title="Top 10 Social APIs: Facebook, Twitter and Google Plus | ProgrammableWeb">Top 10 Social APIs: Facebook, Twitter and Google Plus | ProgrammableWeb</a></li>
+</ul>
+</div>
+<div id="rssatom-als-offene-standards" class="titleslide slide section level1"><h1>RSS/Atom als offene Standards</h1></div><div id="freier-zugang-zu-inhalten-für-benutzer" class="slide section level2">
+<h2>Freier Zugang zu Inhalten für Benutzer</h2>
+<ul>
+<li>Unabhängigkeit von Applikationen/Anbietern</li>
+<li>Unabhängigkeit von Formatvorgaben</li>
+</ul>
+</div><div id="weiterentwicklung-der-technologie-in-der-community" class="slide section level2">
+<h2>Weiterentwicklung der Technologie in der Community</h2>
+<ul>
+<li>Leichte Kombinierbarkeit mit anderen Technologien (z.B. Namespaces; Inhaltsformate)</li>
+<li>Entwicklung abgeleiteter Technologien (z.B. Podcasts, WebSub)</li>
+</ul>
+</div>
+<div id="feeds-in-content-management-und-content-strategie" class="titleslide slide section level1"><h1>Feeds in Content Management und Content-Strategie</h1></div><div id="content-management-aufgaben-inhalt-als-code" class="slide section level2">
+<h2>Content Management-Aufgaben (&quot;Inhalt als Code&quot;)</h2>
+<ul>
+<li>Produktion von Feeds sicherstellen</li>
+<li>Kontrolle der Feedformate und der Qualität von Feeds</li>
+<li>Monitoring von Feeds</li>
+</ul>
+</div><div id="contentstrategische-und--taktische-aufgaben-code-als-inhalt" class="slide section level2">
+<h2>Contentstrategische und -taktische Aufgaben (&quot;Code als Inhalt&quot;)</h2>
+<ul>
+<li>Integration von Inhalten durch Feeds, Kuratieren</li>
+<li>Entscheidung über Inhalte, Umfang und Anzahl von Feeds</li>
+<li>Versorgen von Publikations-Plattformen mit Feeds</li>
+<li>Entscheidung über Kampagnen (siehe z.b. das <a href="https://blog.mailchimp.com/rss-to-email-tutorial/" title="RSS to Email Tutorial">MailChimp RSS to Email Tutorial</a>)</li>
+<li>Entscheidung über zusätzliche Angebote (Podcasts)</li>
+</ul>
+</div>
+</body>
+</html>
