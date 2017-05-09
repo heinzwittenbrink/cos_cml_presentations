@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Heinz Wittenbrink" />
+  <title>XML and Content Management — DITA</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="http://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="http://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
+</head>
+<body>
+<div class="slide titlepage">
+  <h1 class="title">XML and Content Management — DITA</h1>
+  <p class="author">
+Heinz Wittenbrink
+  </p>
+  <p class="date">9. Mai 2017</p>
+</div>
+<div id="zielsetzung" class="slide section level2">
+<h2>Zielsetzung</h2>
+<ul>
+<li>Grundwissen über DITA</li>
+<li>Sammlung von Fragen</li>
+<li>Überlegungen zu einem Beispielprojekt</li>
+</ul>
+</div>
+<div id="dita-basics" class="titleslide slide section level1"><h1>DITA-Basics</h1></div><div id="warum-dita" class="slide section level2">
+<h2>Warum DITA?</h2>
+<ul>
+<li><p>Wiederverwendbarkeit von Inhalten</p></li>
+<li><p>Wiederverwendbarkeit von Modellen</p></li>
+<li><p>Trennung von Modell und Präsentation</p></li>
+<li><p>Orientierung an digitaler Ausgabe statt an papier-basierten Formaten</p></li>
+</ul>
+</div><div id="typische-vorteile" class="slide section level2">
+<h2>Typische Vorteile</h2>
+<ul>
+<li><p>supporting the publication of a range of information products for a variety of user types and across a number of product releases.</p></li>
+<li><p>to introduce new collections of content that would add new types of content (e.g., hardware documentation, business procedures, and so on)</p></li>
+</ul>
+<p>(<a href="https://github.com/dita-community/dita-demo-content-collection/blob/dita-1.3/README.md" title="dita-demo-content-collection/README.md at dita-1.3 · dita-community/dita-demo-content-collection">dita-demo-content-collection/README.md at dita-1.3 · dita-community/dita-demo-content-collection</a>)</p>
+</div><div id="design-prinzipien" class="slide section level2">
+<h2>Design-Prinzipien</h2>
+<ul>
+<li><p>Minimalismus</p></li>
+<li><p>Vererbung/Objektorientierung</p></li>
+</ul>
+</div><div id="dita-basics-in-code-beispielen" class="slide section level2">
+<h2>DITA-Basics in Code-Beispielen</h2>
+<p>(Quelle: <a href="https://en.wikipedia.org/wiki/Darwin_Information_Typing_Architecture" title="Darwin Information Typing Architecture - Wikipedia">Darwin Information Typing Architecture - Wikipedia</a></p>
+<h3 id="ditamap-file-table-of-contents-sample">Ditamap file (table of contents) sample</h3>
+<pre><code>&lt;source lang=&quot;xml&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE map PUBLIC &quot;-//OASIS//DTD DITA Map//EN&quot; &quot;map.dtd&quot;&gt;
+&lt;map id=&quot;map&quot; xml:lang=&quot;en&quot;&gt;
+  &lt;topicref format=&quot;dita&quot; href=&quot;sample.dita&quot; navtitle=&quot;Sample&quot; type=&quot;topic&quot;/&gt;
+&lt;/map&gt;
+&lt;/source&gt;</code></pre>
+<h3 id="hello-world-topic-dtd">Hello World (topic DTD)</h3>
+<pre><code>&lt;source lang=&quot;xml&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;!DOCTYPE topic PUBLIC &quot;-//OASIS//DTD DITA Topic//EN&quot; &quot;topic.dtd&quot;&gt;
+&lt;topic xml:lang=&quot;en&quot; id=&quot;sample&quot;&gt;
+  &lt;title&gt;Sample&lt;/title&gt;
+  &lt;body&gt;
+  &lt;p audience=&quot;foo&quot;&gt;Hello World!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/topic&gt;
+&lt;/source&gt;</code></pre>
+<h3 id="ditaval-file-sample-for-conditionalizing-text">.ditaval file sample (for conditionalizing text)</h3>
+<pre><code>&lt;source lang=&quot;xml&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;val&gt;
+  &lt;prop att=&quot;audience&quot; val=&quot;foo&quot; action=&quot;include&quot; /&gt;
+  &lt;prop att=&quot;audience&quot; val=&quot;bar&quot; action=&quot;exclude&quot; /&gt;
+&lt;/val&gt;
+&lt;/source&gt;</code></pre>
+<p><em>Example of conditionalized text:</em></p>
+<pre><code>&lt;source lang=&quot;xml&quot;&gt;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; 
+&lt;p audience=&quot;foo&quot;&gt;
+This is an information useful for the foo audience! 
+&lt;/p&gt;
+&lt;p audience=&quot;bar&quot;&gt;
+This is an information useful for the bar audience. 
+&lt;/p&gt;
+&lt;/source&gt;</code></pre>
+</div><div id="topics" class="slide section level2">
+<h2>Topics</h2>
+<blockquote>
+<p>A topic is a unit of information with a title and content, short enough to be specific to a single subject or answer a single question, but long enough to make sense on its own and be authored as a unit.</p>
+</blockquote>
+<blockquote>
+<p>Topics are the basis for high-quality information. They should be short enough to be easily readable, but long enough to make sense on their own.</p>
+</blockquote>
+<blockquote>
+<p>Information typing is the practice of identifying types of topics that contain distinct kinds information, such as concepts, tasks, and reference information. Topics that answer different kinds of questions can be categorized as different information types. The base topic types provided by DITA ( a generic topic, plus concept, task, and reference ) provide a usable starter set that can be adopted for immediate authoring.</p>
+</blockquote>
+<p>Quelle: <a href="https://docs.oasis-open.org/dita/v1.0/archspec/topicover.html" title="DITA topics">DITA topics</a></p>
+</div><div id="grundlegende-topic-typen" class="slide section level2">
+<h2>Grundlegende Topic-Typen</h2>
+<ul>
+<li><em>Concepts</em>: DITA concept topics answer &quot;What is...&quot; questions. They include a body-level element with a basic topic structure, including sections and examples.</li>
+<li><em>Tasks</em>: Task topics answer &quot;How do I?&quot; questions, and have a well-defined structure that describes how to complete a procedure to accomplish a specific goal.</li>
+<li><em>Reference</em>: Reference topics describe regular features of a subject or product, such as commands in a programming language.</li>
+</ul>
+<p>Quelle: <a href="https://docs.oasis-open.org/dita/v1.0/archspec/topicover.html" title="DITA topics">DITA topics</a></p>
+</div><div id="struktur-content-module" class="slide section level2">
+<h2>Struktur, Content, Module</h2>
+<ul>
+<li><p><a href="https://docs.oasis-open.org/dita/v1.0/archspec/dita_spec_22_topics_structure.html" title="Topic structure">Topic structure</a></p></li>
+<li><p><a href="https://docs.oasis-open.org/dita/v1.0/archspec/topiccontent.html" title="Topic content">Topic content</a></p></li>
+<li><p><a href="https://docs.oasis-open.org/dita/v1.0/archspec/topicmodules.html" title="Topic modules">Topic modules</a></p></li>
+</ul>
+</div><div id="maps" class="slide section level2">
+<h2>Maps</h2>
+<p><a href="https://www.oxygenxml.com/dita/styleguide/webhelp-feedback/Artefact/Maps/c_Working_with_Map_Files.html" title="Purpose of ditamap files">DITA map files are used for defining the topics of a publication, specifying the topic sequence, and controlling linking between topics.</a></p>
+<ul>
+<li>Defining the topics</li>
+<li>Specifying the sequence</li>
+<li>Controlling linking</li>
+</ul>
+<p>Teile - Topic Manifest definiert die Topics in einer Publikation - Hierarchy Definition Reihenfolge, Bedeutung, Navigationswege - Link-Beziehungen</p>
+<p>Siehe zu den Maps: <a href="https://www.oxygenxml.com/dita/styleguide/webhelp-feedback/Artefact/Maps/c_Working_with_Map_Files.html" title="Purpose of ditamap files">Purpose of ditamap files</a></p>
+<p>Die Maps bestehen vor allem aus topicref-elementen. Diese gehören zur hierarchy und gegebenenfalls tz relationship tables.</p>
+</div><div id="beispiel-topic-map" class="slide section level2">
+<h2>Beispiel topic map</h2>
+<pre><code>&lt;map&gt;
+  &lt;title&gt;DITA for the Impatient&lt;/title&gt;
+
+  &lt;topicmeta&gt;
+    &lt;author&gt;Hussein Shafie&lt;/author&gt;
+    &lt;publisher&gt;Pixware&lt;/publisher&gt;
+    &lt;critdates&gt;
+      &lt;created date=&quot;October 7, 2009&quot;/&gt;
+    &lt;/critdates&gt;
+  &lt;/topicmeta&gt;
+
+  &lt;topicref href=&quot;introduction.dita&quot;/&gt;
+  &lt;topicref href=&quot;topics_and_maps.dita&quot;/&gt;
+  &lt;topicref href=&quot;topic.dita&quot;&gt;
+    &lt;topicref href=&quot;topic_structure.dita&quot;&gt;
+      &lt;topicref href=&quot;samples/sample_topic.dita&quot; toc=&quot;no&quot;/&gt;
+    &lt;/topicref&gt;
+    &lt;topicref href=&quot;block_elements.dita&quot;/&gt;
+    &lt;topicref href=&quot;inline_elements.dita&quot;/&gt;
+    &lt;topicref href=&quot;link_elements.dita&quot;/&gt;
+  &lt;/topicref&gt;
+  .
+  .
+  .
+  &lt;topichead navtitle=&quot;Topic maps&quot;&gt;
+    &lt;topicref href=&quot;map.dita&quot;/&gt;
+    &lt;topicref href=&quot;bookmap.dita&quot;/&gt;
+  &lt;/topichead&gt;
+  &lt;topicref href=&quot;conclusion.dita&quot;/&gt;
+&lt;/map&gt;</code></pre>
+</div><div id="publications-and-collections" class="slide section level2">
+<h2>Publications and Collections</h2>
+<p>References: <a href="https://www.oxygenxml.com/dita/styleguide/webhelp-feedback/Artefact/Maps/c_Publication_Defined.html" title="Publication and collection defined">Publication and collection defined</a></p>
+</div><div id="zentralisiertes-management-von-variablen" class="slide section level2">
+<h2>Zentralisiertes Management von Variablen</h2>
+<p><strong>Beispiel:</strong></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE reference PUBLIC &quot;-//OASIS//DTD DITA 1.3 Reference//EN&quot; &quot;reference.dtd&quot;&gt;
+&lt;reference id=&quot;product_warehouse_STA&quot;&gt;
+  &lt;title&gt;Product Name Variables&lt;/title&gt;
+  &lt;shortdesc&gt;Reused variable definitions.&lt;/shortdesc&gt;
+  &lt;refbody&gt;
+        &lt;section&gt;
+            &lt;p&gt;
+                &lt;table frame=&quot;none&quot; id=&quot;table_47ae399c-8ad1-4f3e-9595-e7225da6becb&quot;&gt;
+                    &lt;title&gt;Variable names&lt;/title&gt;
+                    &lt;tgroup cols=&quot;2&quot;&gt;
+                        &lt;colspec colname=&quot;c1&quot; colnum=&quot;1&quot; colwidth=&quot;1.0*&quot;/&gt;
+                        &lt;colspec colname=&quot;c2&quot; colnum=&quot;2&quot; colwidth=&quot;1.0*&quot;/&gt;
+                        &lt;thead&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;Used as...&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;Name to use&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                            &lt;/row&gt;
+                        &lt;/thead&gt;
+                        &lt;tbody&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;Primary product name&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;term
+                    id=&quot;ph_prodname&quot;&gt;STA&lt;/term&gt;&lt;/p&gt;
+                                    &lt;draft-comment&gt;Change value here when primary
+                                        product name changes. &lt;/draft-comment&gt;
+                                &lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;Company name&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;term id=&quot;ph_companyname&quot;&gt;Thunderbird&lt;/term&gt;&lt;/p&gt;
+                                    &lt;draft-comment&gt;Change value here when the
+                                        company name changes. &lt;/draft-comment&gt;
+                                &lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;Reporting system&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;term id=&quot;ph_clusterview&quot;&gt;ClusterView&lt;/term&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;Controller system&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;term id=&quot;ph_clustercontrol&quot;&gt;ClusterControl&lt;/term&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;ph&gt;End User&lt;/ph&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                                &lt;entry&gt;
+                                    &lt;p&gt;&lt;term id=&quot;ph_enduser&quot;&gt;MobileView&lt;/term&gt;&lt;/p&gt;
+                                &lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;&lt;p&gt;&lt;ph&gt;Data Syncrhonization System&lt;/ph&gt;&lt;/p&gt;&lt;/entry&gt;
+                                &lt;entry&gt;&lt;p&gt;&lt;term id=&quot;ph_balance&quot;&gt;ClusterBalance&lt;/term&gt;&lt;/p&gt;&lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;&lt;p&gt;&lt;ph&gt;Analytics Server&lt;/ph&gt;&lt;/p&gt;&lt;/entry&gt;
+                                &lt;entry&gt;&lt;p&gt;&lt;term id=&quot;ph_analytics&quot;&gt;ClusterAnalyzer&lt;/term&gt;&lt;/p&gt;&lt;/entry&gt;
+                            &lt;/row&gt;
+                            &lt;row&gt;
+                                &lt;entry&gt;&lt;p&gt;&lt;ph&gt;Data Persistence&lt;/ph&gt;&lt;/p&gt;&lt;/entry&gt;
+                                &lt;entry&gt;&lt;p&gt;&lt;term id=&quot;ph_persistence&quot;&gt;ClusterStore&lt;/term&gt;&lt;/p&gt;&lt;/entry&gt;
+                            &lt;/row&gt;                            
+                        &lt;/tbody&gt;
+                    &lt;/tgroup&gt;
+                &lt;/table&gt;
+            &lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/refbody&gt;
+&lt;/reference&gt;</code></pre>
+</div><div id="anpassungspezialisierung" class="slide section level2">
+<h2>Anpassung/Spezialisierung</h2>
+</div><div id="geschichte" class="slide section level2">
+<h2>Geschichte</h2>
+<p>März 2001: IBM stellt Kern-DTD und XML-Schema fertig</p>
+<p>Mai 2002: Zur Topic-Spezialisierung kommt die Domain-Spezialisierung</p>
+<p>2004 OASIS Technical Commitee</p>
+<p>Februar 2005: IBM übergibt das DITA Open Toolkit an Sourceforge</p>
+<p>Juni 2005: DITA 1.0</p>
+<p>August 2007: DITA 1.1 (neue Bookmap-Spezialisierung)</p>
+<p>2010: DITA 1.2 (Lernobjekte)</p>
+<p>Material: <a href="http://dita.xml.org/book/export/html/1047" title="History of DITA">History of DITA</a></p>
+<p>17.12.2015: DITA 1.3 (Troubleshooting-Topic, Scoped Keys, MathML und Equation-Domains, Relax NG für normative Schemas )</p>
+</div><div id="beispiele" class="slide section level2">
+<h2>Beispiele</h2>
+<ul>
+<li><p>DITA-Dokumente: <a href="https://github.com/dita-community/dita-demo-content-collection" title="dita-community/dita-demo-content-collection: DITA Demonstration Content Collection">dita-community/dita-demo-content-collection: DITA Demonstration Content Collection</a>°°°°°</p></li>
+<li><p>DITA-basierte Website: <a href="http://www.thecontentera.com/live/php/viewpage.php?topic=home.dita" title="The Content Era is here">The Content Era is here</a></p></li>
+<li><p>DITA-basiertes CMS: <a href="http://intuillion.com/products/ditatoo/" title="DITA Content Management | DITAToo DITA CCMS: Your Easy Entry to DITA">DITAToo DITA CCMS</a></p></li>
+</ul>
+</div>
+<div id="anwendungsmöglichkeiten" class="titleslide slide section level1"><h1>Anwendungsmöglichkeiten</h1></div><div id="integrierte-content-strategie" class="slide section level2">
+<h2>Integrierte Content-Strategie</h2>
+</div>
+<div id="nächste-schritte" class="titleslide slide section level1"><h1>Nächste Schritte</h1></div>
+<div id="material" class="titleslide slide section level1"><h1>Material</h1></div><div id="websites" class="slide section level2">
+<h2>Websites:</h2>
+<blockquote>
+<p>DITA XML.org is the official community gathering place and information resource for the DITA OASIS Standard, an XML architecture for designing, writing, managing, and publishing information. We encourage you to contribute content to this site.</p>
+</blockquote>
+<p><a href="http://dita.xml.org/" title="DITA XML.org | Online community for the Darwin Information Typing Architecture OASIS Standard">DITA XML.org | Online community for the Darwin Information Typing Architecture OASIS Standard</a></p>
+</div><div id="editoren" class="slide section level2">
+<h2>Editoren:</h2>
+<ul>
+<li>Oxygen</li>
+<li><a href="http://idratherbewriting.com/2016/03/30/xeditor-xml-editor-for-your-cms-or-ccms/" title="Xeditor, a CMS editor for XML content | I&#39;d Rather Be Writing">Xeditor, a CMS editor for XML content | I'd Rather Be Writing</a></li>
+</ul>
+</div><div id="texte" class="slide section level2">
+<h2>Texte</h2>
+<p><a href="http://idratherbewriting.com/2015/01/28/10-reasons-for-moving-away-from-dita/" title="10 reasons for moving away from DITA | I&#39;d Rather Be Writing">10 reasons for moving away from DITA | I'd Rather Be Writing</a></p>
+<p>/Applications/Aquamacs.app/Contents/Resources/etc/schema/xhtml.rnc</p>
+<p><a href="https://www.oxygenxml.com/forum/topic6637.html" title="Step by step process to create new DITA project - Oxygen XML Forum">Step by step process to create new DITA project - Oxygen XML Forum</a></p>
+<p><a href="https://www.oxygenxml.com/xml_editor/dita_maps_manager.html" title="DITA Maps Manager - Oxygen XML Editor">DITA Maps Manager - Oxygen XML Editor</a></p>
+<p><a href="https://www.oxygenxml.com/doc/versions/19.0/ug-editor/topics/eppo-pathfinder-reuse.html" title="Reusing DITA Content">Reusing DITA Content</a></p>
+</div><div id="tools" class="slide section level2">
+<h2>Tools</h2>
+<ul>
+<li><p><a href="http://www.xmlmind.com/ditac/what_is_ditac.html" title="XMLmind DITA Converter: XMLmind DITA Converter">XMLmind DITA Converter</a></p></li>
+<li><p><a href="http://www.dita-ot.org/" title="DITA Open Toolkit">DITA Open Toolkit</a></p></li>
+</ul>
+</div><div id="meine-dita-links" class="slide section level2">
+<h2>Meine DITA Links</h2>
+<p><a href="https://www.pinboard.in/u:heinzwittenbrink/t:DITA/" title="Pinboard: bookmarks for heinzwittenbrink tagged &#39;dita&#39;">Pinboard: bookmarks for heinzwittenbrink tagged 'dita'</a></p>
+</div>
+</body>
+</html>
