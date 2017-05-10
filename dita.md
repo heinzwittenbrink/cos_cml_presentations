@@ -8,7 +8,6 @@
 - Sammlung von Fragen
 - Überlegungen zu einem Beispielprojekt
 
-
 # DITA-Basics
 
 ## Warum DITA?
@@ -24,6 +23,8 @@
 ## Typische Vorteile
 
 - supporting the publication of a range of information products for a variety of user types and across a number of product releases.
+
+- supporting the publication of a range of information products across a number of product releases.
 
 - to introduce new collections of content that would add new types of content (e.g., hardware documentation, business procedures, and so on)
 
@@ -120,10 +121,10 @@ Quelle: [DITA topics](https://docs.oasis-open.org/dita/v1.0/archspec/topicover.h
 - Specifying the sequence
 - Controlling linking
 
-Teile
-- Topic Manifest definiert die Topics in einer Publikation
--  Hierarchy Definition Reihenfolge, Bedeutung, Navigationswege
--  Link-Beziehungen 
+### Teile von Maps
+- *Topic Manifest*: definiert die Topics in einer Publikation
+-  *Hierarchy Definition*: Reihenfolge, Bedeutung, Navigationswege
+-  *Link*-Beziehungen 
 
 Siehe zu den Maps: [Purpose of ditamap files](https://www.oxygenxml.com/dita/styleguide/webhelp-feedback/Artefact/Maps/c_Working_with_Map_Files.html "Purpose of ditamap files")
 
